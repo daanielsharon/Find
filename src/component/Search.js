@@ -19,8 +19,8 @@ const Search = ({ type, modifyData }) => {
 	};
 
 	return (
-		<div className="flex justify-center desktop:mb-0 tablet:mb-0 mobile:mb-3 ">
-			<div className="desktop:w-[66vw] tablet:w-[34vw] mobile:w-[92vw]">
+		<div className="flex justify-center desktop:w-[100vw] desktop:mb-0 tablet:mb-0 tablet:w-[100vw] mobile:w-full mobile:mb-3 ">
+			<div className="desktop:w-full tablet:w-full mobile:w-full ">
 				<div className="input-group relative flex flex-row items-stretch w-full ">
 					<input
 						type="search"

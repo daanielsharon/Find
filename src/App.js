@@ -5,10 +5,11 @@ import TodoTable from './component/TodoTable';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import http from './helper/interceptor';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 function App() {
 	const [todos, setTodos] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(true);
 	const [type, setType] = useState('');
 	const [status, setStatus] = useState('');
 	const [sort, setSort] = useState({ title: '', userId: '' });
@@ -65,18 +66,20 @@ function App() {
 	const getTodoList = async () => {
 		const response = await http.get('/todos');
 		setTodos(response.data);
-		setLoading(false);
+		setIsLoading(false);
 	};
 
 	return (
 		<div className="p-4">
-			<div className="desktop:flex desktop:flex-row desktop:items-center desktop:justify-start desktop:w-full desktop:mb-5 desktop:py-5 tablet:flex tablet:flex-row tablet:items-center tablet:justify-start tablet:w-full tablet:mb-5 tablet:py-5 mobile:flex mobile:flex-col mobile:items-start mobile:py-3">
-				<Search type={type} modifyData={modifyData} />
-				<Dropdown selected={status} modifyDataStatus={modifyDataStatus} />
-				<Sort text={'Sort by title:'} selected={sort.title} modifyDataSort={modifyDataSortTitle} />
-				<Sort text={'Sort by userId: '} selected={sort.userId} modifyDataSort={modifyDataSortUserId} />
-			</div>
-			<TodoTable loading={loading} todos={filter(todos)} />
+			<SkeletonTheme baseColor="#f3f4f6" highlightColor="#e5e7eb">
+				<div className="desktop:flex desktop:flex-row desktop:items-center desktop:justify-start desktop:w-full desktop:mb-5 desktop:py-5 tablet:flex tablet:flex-row tablet:items-center tablet:justify-start tablet:w-full tablet:mb-5 tablet:py-5 mobile:flex mobile:flex-col mobile:items-start mobile:py-3">
+					<Search type={type} modifyData={modifyData} />
+					<Dropdown selected={status} modifyDataStatus={modifyDataStatus} />
+					<Sort text={'Sort by title:'} selected={sort.title} modifyDataSort={modifyDataSortTitle} />
+					<Sort text={'Sort by userId: '} selected={sort.userId} modifyDataSort={modifyDataSortUserId} />
+				</div>
+				<TodoTable isLoading={isLoading} todos={filter(todos)} />
+			</SkeletonTheme>
 		</div>
 	);
 }
