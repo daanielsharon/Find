@@ -1,5 +1,4 @@
 import Search from './component/Search';
-import Dropdown from './component/Dropdown';
 import Sort from './component/Sort';
 import TodoTable from './component/TodoTable';
 import { useState } from 'react';
@@ -12,7 +11,9 @@ function App() {
 	const [isLoading, setIsLoading] = useState(true);
 	const [type, setType] = useState('');
 	const [status, setStatus] = useState('');
-	const [sort, setSort] = useState({ title: '', userId: '' });
+	const [sort, setSort] = useState({ title: '', userId: '', completed: '' });
+
+	console.log(typeof sort.completed);
 
 	useEffect(() => {
 		getTodoList();
@@ -74,9 +75,9 @@ function App() {
 			<SkeletonTheme baseColor="#f3f4f6" highlightColor="#e5e7eb">
 				<div className="desktop:flex desktop:flex-row desktop:items-center desktop:justify-start desktop:w-full desktop:mb-5 desktop:py-5 tablet:flex tablet:flex-row tablet:items-center tablet:justify-start tablet:w-full tablet:mb-5 tablet:py-5 mobile:flex mobile:flex-col mobile:items-start mobile:py-3">
 					<Search type={type} modifyData={modifyData} />
-					<Dropdown selected={status} modifyDataStatus={modifyDataStatus} />
-					<Sort text={'Sort by title:'} selected={sort.title} modifyDataSort={modifyDataSortTitle} />
-					<Sort text={'Sort by userId: '} selected={sort.userId} modifyDataSort={modifyDataSortUserId} />
+					<Sort text={'Completed:'} selected={sort.completed} modifyDataSort={modifyDataStatus} firstValue={'true'} secondValue={'false'} firstOption={'True'} secondOption={'False'} />
+					<Sort text={'Sort by title:'} selected={sort.title} modifyDataSort={modifyDataSortTitle} firstValue={'ascending'} secondValue={'descending'} firstOption={'Ascending'} secondOption={'Descending'} />
+					<Sort text={'Sort by userId: '} selected={sort.userId} modifyDataSort={modifyDataSortUserId} firstValue={'ascending'} secondValue={'descending'} firstOption={'Ascending'} secondOption={'Descending'} />
 				</div>
 				<TodoTable isLoading={isLoading} todos={filter(todos)} />
 			</SkeletonTheme>

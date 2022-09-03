@@ -1,10 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
+import { stringToBoolean } from '../helper/converter';
 
-const Sort = ({ text, selected, modifyDataSort }) => {
+const Sort = ({ text, selected, modifyDataSort, firstValue, secondValue, firstOption, secondOption }) => {
 	const [select, setSelect] = useState(selected);
 
 	const onSelect = (e) => {
+		console.log(typeof e.target.value);
+		// eslint-disable-next-line
+		switch (true) {
+			case e.target.value === 'true':
+				stringToBoolean(e.target.value);
+			// eslint-disable-next-line
+			case e.target.value === 'false':
+				stringToBoolean(e.target.value);
+		}
 		setSelect(e.target.value);
 		modifyDataSort(e.target.value);
 	};
@@ -19,8 +29,8 @@ const Sort = ({ text, selected, modifyDataSort }) => {
 				onChange={onSelect}
 			>
 				<option value="">Unsorted</option>
-				<option value="ascending">Ascending</option>
-				<option value="descending">Descending</option>
+				<option value={firstValue}>{firstOption}</option>
+				<option value={secondValue}>{secondOption}</option>
 			</select>
 		</div>
 	);
