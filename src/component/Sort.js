@@ -10,7 +10,6 @@ const Sort = ({ text, selected, modifyDataSort, firstValue, secondValue, firstOp
 		// eslint-disable-next-line
 		switch (true) {
 			case theWord === 'true':
-				console.log('ini true');
 				theWord = stringToBoolean(e.target.value);
 				break;
 			// eslint-disable-next-line
