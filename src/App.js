@@ -12,8 +12,6 @@ function App() {
 	const [type, setType] = useState('');
 	const [sort, setSort] = useState({ title: '', userId: '', completed: '' });
 
-	console.log(typeof sort.completed);
-
 	useEffect(() => {
 		getTodoList();
 	}, []);

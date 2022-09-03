@@ -4,7 +4,7 @@ import SkeletonLoader from './SkeletonLoader';
 
 const TodoTable = ({ isLoading, todos }) => {
 	return (
-		<div className="overflow-hidden overflow-x-auto border border-gray-100 rounded desktop:mt-0 tablet:mt-0 mobile:mt-3 ">
+		<div className="overflow-hidden overflow-x-auto border border-gray-100 rounded desktop:mt-0 tablet:mt-0 mobile:mt-4 ">
 			<table className="min-w-full text-sm divide-y divide-gray-200">
 				<thead>
 					<tr className="bg-gray-50">
