@@ -10,7 +10,6 @@ function App() {
 	const [todos, setTodos] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [type, setType] = useState('');
-	const [status, setStatus] = useState('');
 	const [sort, setSort] = useState({ title: '', userId: '', completed: '' });
 
 	console.log(typeof sort.completed);
@@ -20,17 +19,17 @@ function App() {
 	}, []);
 
 	const modifyData = (query) => setType(query);
-	const modifyDataStatus = (option) => setStatus(option);
+	const modifyDataStatus = (option) => setSort({ ...sort, completed: option });
 	const modifyDataSortTitle = (option) => setSort({ ...sort, title: option });
 	const modifyDataSortUserId = (option) => setSort({ ...sort, userId: option });
 
 	const filter = (todos) => {
-		const selected = typeof status == 'boolean' ? status : '';
+		const selected = typeof sort.completed == 'boolean' ? sort.completed : '';
 		return todos
 			.filter((todo) => todo['title'].toLowerCase().includes(type))
 			.filter((todo) => {
 				if (selected !== '') {
-					return todo['completed'] === status;
+					return todo['completed'] === sort.completed;
 				}
 				return todo;
 			})
