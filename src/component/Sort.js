@@ -24,7 +24,7 @@ const Sort = ({ text, selected, modifyDataSort, firstValue, secondValue, firstOp
 	};
 
 	return (
-		<div className="w-full desktop:flex-1 desktop:border-solid desktop:border-b-2 desktop:border-indigo-600 tablet:flex-1 tablet:border-solid tablet:border-b-2 tablet:border-indigo-600 desktop:ml-5 tablet:ml-5 mobile:ml-0 mobile:flex mobile:flex-row mobile:items-center mobile:justify-between mobile:border-solid mobile:border-b-2 mobile:border-indigo-600 ">
+		<div className="w-full desktop:flex-1 desktop:border-solid desktop:border-b-2 desktop:border-indigo-600 tablet:flex-[1.3_1.3_0%] tablet:border-solid tablet:border-b-2 tablet:border-indigo-600 desktop:ml-5 tablet:ml-5 mobile:ml-0 mobile:flex mobile:flex-row mobile:items-center mobile:justify-between mobile:border-solid mobile:border-b-2 mobile:border-indigo-600 ">
 			<div>{text}</div>
 			<select
 				value={select}
